@@ -1,3 +1,4 @@
 secrets_1.py
 venv/**
 .gitignore
+output.csv

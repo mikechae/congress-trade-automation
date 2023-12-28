@@ -1,7 +1,7 @@
-import requests, psycopg2, uuid
+import requests, psycopg2
 import pandas as pd
-from secrets_1 import DB_USERNAME, DB_HOSTNAME, DB_NAME, DB_PASSWORD, DB_PORT
-from sqlalchemy import create_engine, MetaData
+from secrets_1 import DB_USERNAME, DB_HOSTNAME, DB_NAME, DB_PASSWORD
+from sqlalchemy import create_engine
 import tables
 
 link = 'https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json'
@@ -23,6 +23,7 @@ def db_connect():
     
     try:  
         #connecting to DB
+        print("Attempting to connect to DB...")
         conn_str = f'postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}'
         db = create_engine(conn_str) 
         connection = db.connect()
